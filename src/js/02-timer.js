@@ -13,7 +13,7 @@ const secEl = document.querySelector('[data-seconds]');
 let interval;
 btnStart.disabled = true;
 
-const options = {
+const calender = flatpickr('#datetime-picker', {
     enableTime: true,
     time_24hr: true,
     defaultDate: new Date(),
@@ -26,13 +26,11 @@ const options = {
             window.alert("Please choose a date in the future");
         } else if (selectedDate > currentDate) { 
             btnStart.disabled = false;
-        };
+        }
     console.log(selectedDates[0]);
     },
 
-  };
-  
-  const calender = flatpickr(inputPicker, options);
+  });
 
   const setTimer = () => {
     const selectedDate = calender.selectedDates[0];
