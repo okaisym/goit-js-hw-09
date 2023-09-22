@@ -1,7 +1,6 @@
 import "flatpickr/dist/flatpickr.min.css";
 import flatpickr from "flatpickr";
 
-const flatpickr = require("flatpickr");
 const currentDate = new Date();
 const btnStart = document.querySelector('[data-start]');
 const inputPicker = document.querySelector('#datetime-picker')
