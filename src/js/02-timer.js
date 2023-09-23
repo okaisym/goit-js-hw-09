@@ -2,8 +2,8 @@ import "flatpickr/dist/flatpickr.min.css";
 import flatpickr from "flatpickr";
 
 const currentDate = new Date();
+const input = document.querySelector('#datetime-picker');
 const btnStart = document.querySelector('[data-start]');
-const inputPicker = document.querySelector('#datetime-picker')
 const minsEl = document.querySelector('[data-minutes]');
 const hoursEl = document.querySelector('[data-hours]');
 const dayEl = document.querySelector('[data-days]');
@@ -26,7 +26,7 @@ const calender = flatpickr('#datetime-picker', {
         } else if (selectedDate > currentDate) { 
             btnStart.disabled = false;
         }
-    console.log(selectedDates[0]);
+    // console.log(selectedDates[0]);
     },
 
   });
@@ -36,6 +36,8 @@ const calender = flatpickr('#datetime-picker', {
     if (selectedDate > currentDate) {
         const timeDifference = selectedDate - currentDate;
         startCountdown(timeDifference);
+        input.disabled = true;
+        btnStart.disabled = true;
         } else {
             window.alert('Please choose a date in the future');
         }
@@ -54,7 +56,7 @@ const calender = flatpickr('#datetime-picker', {
         dayEl.textContent = addLeadingZero(days);
         secEl.textContent = addLeadingZero(seconds);
 
-        if (ms <= 0) {
+        if (ms < 1000) {
             clearInterval(interval);
         } else {
             ms -= 1000;
